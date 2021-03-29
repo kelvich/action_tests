@@ -13,7 +13,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apk add rust cargo
+          apt install -y cargo
 
       - name: Run test
         run: |
