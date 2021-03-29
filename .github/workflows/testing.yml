@@ -13,7 +13,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt install -y cargo
+          sudo apt install -y cargo
 
       - name: Run test
         run: |
