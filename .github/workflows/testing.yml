@@ -1,0 +1,21 @@
+name: regression check
+
+on: [push, pull_request]
+
+jobs:
+  regression-check:
+    name: run regrsession test suite
+    runs-on: alpine-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          apk add rust cargo
+
+      - name: Run test
+        run: |
+          cargo test
+
