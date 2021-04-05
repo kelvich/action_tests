@@ -1,6 +1,6 @@
 name: regression check
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   telega-notify:
