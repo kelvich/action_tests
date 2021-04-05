@@ -20,7 +20,7 @@ jobs:
           git_stat="${git_stat//'%'/'%25'}"
           git_stat="${git_stat//$'\n'/'%0A'}"
           git_stat="${git_stat//$'\r'/'%0D'}"
-          git_stat="${git_stat// / }"
+          git_stat="${git_stat// / }" # space -> 'Space En'
           echo "---"
           echo $git_stat
           echo "::set-output name=git_stat::$git_stat"
@@ -37,7 +37,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
           args: |
-            * [${{ github.actor }} created ${{ github.event_name }} to ${{ github.repository }}](http://ya.ru) *
+            * ${{ github.actor }} created [${{ github.event_name }}](http://ya.ru) to ${{ github.repository }}*
 
             ```
             ${{ steps.git_info_grab.outputs.git_stat }}
