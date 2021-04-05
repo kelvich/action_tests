@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        # with:
+        #   fetch-depth: 2
 
       - name: Set pg revision for caching
         id: git_info_grab
@@ -17,7 +19,7 @@ jobs:
           git_stat="${git_stat//'%'/'%25'}"
           git_stat="${git_stat//$'\n'/'%0A'}"
           git_stat="${git_stat//$'\r'/'%0D'}"
-          git_stat="${git_stat//$'\t'/'%09'}"
+          git_stat="${git_stat//$' '/'%20'}"
           echo "::set-output name=git_stat::$git_stat"
 
       - name: send custom message with args
