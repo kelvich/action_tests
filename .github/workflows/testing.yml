@@ -26,6 +26,7 @@ jobs:
           echo $git_stat
           echo "::set-output name=git_stat::$git_stat"
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+          echo "##[set-output name=git_branch;]$(echo ${GITHUB_REF#refs/heads/})"
 
       - name: send custom message with args
         uses: appleboy/telegram-action@master
@@ -34,12 +35,11 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
           args: |
-            *@${{ github.actor }} created ${{ github.event_name }} to* [${{ github.repository }}](github.com/${{ github.repository }}/commit/${{steps.git_info_grab.outputs.sha_short }})
+            *@${{ github.actor }} created ${{ github.event_name }} to* [${{ github.repository }}](github.com/${{ github.repository }}/commit/${{steps.git_info_grab.outputs.sha_short }}) branch ${{steps.git_info_grab.outputs.git_branch}}
 
             ```
             ${{ steps.git_info_grab.outputs.git_stat }}
             ```
-
 
   regression-check:
     name: run regrsession test suite
