@@ -12,7 +12,10 @@ jobs:
 
       - name: Set pg revision for caching
         id: git_info_grab
-        run: echo ::set-output name=git_stat::$(git show --stat)
+        run: |
+          git_stat=$(git show --stat)
+          git_stat="${git_stat//$'\n'/'%0A'}"
+          echo "::set-output name=git_stat::$git_stat"
 
       - name: send custom message with args
         uses: appleboy/telegram-action@master
