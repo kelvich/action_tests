@@ -37,7 +37,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
           args: |
-            ${{ github.actor }} created [${{ github.event_name }}](http://ya.ru) to ${{ github.repository }}
+            ${{ github.actor }} created *[${{ github.event_name }}](http://ya.ru)* to ${{ github.repository }}
 
             ```
             ${{ steps.git_info_grab.outputs.git_stat }}
