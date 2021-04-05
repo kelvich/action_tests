@@ -17,6 +17,7 @@ jobs:
           git_stat="${git_stat//'%'/'%25'}"
           git_stat="${git_stat//$'\n'/'%0A'}"
           git_stat="${git_stat//$'\r'/'%0D'}"
+          git_stat="${git_stat//$'\t'/'%09'}"
           echo "::set-output name=git_stat::$git_stat"
 
       - name: send custom message with args
