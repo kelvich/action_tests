@@ -28,6 +28,7 @@ jobs:
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
           echo "##[set-output name=git_branch;]$(echo ${GITHUB_REF#refs/heads/})"
 
+
       - name: send custom message with args
         uses: appleboy/telegram-action@master
         with:
