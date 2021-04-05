@@ -13,7 +13,7 @@ jobs:
       - name: Set pg revision for caching
         id: git_info_grab
         run: |
-          git_stat=$(git show --stat)
+          git_stat=$(git show --stat=50)
           git_stat="${git_stat//$'\n'/'%0A'}"
           echo "::set-output name=git_stat::$git_stat"
 
