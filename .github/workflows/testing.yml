@@ -3,6 +3,17 @@ name: regression check
 on: [push, pull_request]
 
 jobs:
+  telega-notify:
+    name: notify about commits
+    runs-on: ubuntu-latest
+    steps:
+      - name: send custom message with args
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: The ${{ github.event_name }} event triggered first step.
+
   regression-check:
     name: run regrsession test suite
     runs-on: ubuntu-latest
