@@ -35,7 +35,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
           args: |
-            *@${{ github.actor }} created ${{ github.event_name }} to* [${{ github.repository }}](github.com/${{ github.repository }}/commit/${{steps.git_info_grab.outputs.sha_short }}) branch ${{steps.git_info_grab.outputs.git_branch}}
+            *@${{ github.actor }} created ${{ github.event_name }} to* [${{ github.repository }}:${{steps.git_info_grab.outputs.git_branch}}](github.com/${{ github.repository }}/commit/${{steps.git_info_grab.outputs.sha_short }})
 
             ```
             ${{ steps.git_info_grab.outputs.git_stat }}
