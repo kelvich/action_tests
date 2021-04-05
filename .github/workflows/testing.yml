@@ -26,11 +26,6 @@ jobs:
           echo "::set-output name=git_stat::$git_stat"
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
-      - name: Set pg revision for caching
-        run: |
-          echo "---xxx---"
-          echo "${{ steps.git_info_grab.outputs.git_stat }}"
-
       - name: send custom message with args
         uses: appleboy/telegram-action@master
         with:
